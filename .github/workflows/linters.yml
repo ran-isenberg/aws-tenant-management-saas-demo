@@ -28,7 +28,8 @@ jobs:
       - name: Install dependencies
         run: |
           pip install --upgrade pip pre-commit poetry
-          poetry install
+          poetry export --with=dev --without-hashes --format=requirements.txt > dev_requirements.txt
+          pip install -r dev_requirements.txt
       - name: pre commit
         run: |
           make pre-commit
