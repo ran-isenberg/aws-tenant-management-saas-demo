@@ -6,7 +6,7 @@
 ![github-star-badge](https://img.shields.io/github/stars/ran-isenberg/aws-tenant-management-saas-demo.svg?style=social)
 ![issues](https://img.shields.io/github/issues/ran-isenberg/aws-tenant-management-saas-demo)
 
-![alt text](https://github.com/ran-isenberg/aws-tenant-management-saas-demo/blob/main/architecture.png?raw=true)]
+![alt text](https://github.com/ran-isenberg/aws-tenant-management-saas-demo/blob/main/architecture.png?raw=true)
 
 This repository contains code snippets and examples of an AWS Lambda handler function that implements tenant management requests sent via Amazon SNS & SQS.
 
