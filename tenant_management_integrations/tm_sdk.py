@@ -1,12 +1,13 @@
 from typing import Any, Dict, List
 
+import boto3
+import cachetools
 from aws_lambda_powertools import Logger
 from aws_lambda_powertools.utilities.parser import ValidationError as ParseError
 from aws_lambda_powertools.utilities.parser import parse
 from botocore.exceptions import ClientError
 from pydantic import ValidationError
 
-import tenant_management_integrations.shared as shared
 from tenant_management_integrations.schemas.common import TenantMgmtException
 from tenant_management_integrations.schemas.sqs import HardenedSqsModel, HardenedSqsRecordModel, ServiceResponse
 
@@ -45,7 +46,7 @@ def send_response_to_tenant_mgmt_sqs(
 
     # assume role to gain access to sqs
     try:
-        client = shared.get_boto3_client('sqs', sqs_role_arn, external_id)
+        client = get_boto3_client('sqs', sqs_role_arn, external_id)
     except (ClientError, ValidationError, IndexError) as exc:
         error_str = f'failed to assume role for SQS access, exception={str(exc)}'
         logger.error(error_str)
@@ -78,3 +79,9 @@ def _get_sqs_message_attributes() -> Dict[str, Any]:
         'StringValue': 'session_id',
     }
     return message_attributes
+
+
+@cachetools.cached(cachetools.TTLCache(maxsize=50, ttl=360))
+def get_boto3_client(aws_service: str, role_arn: str, external_id: str) -> boto3.client:
+    # cool security action happens here
+    return boto3.client(service_name=aws_service)

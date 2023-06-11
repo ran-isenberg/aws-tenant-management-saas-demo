@@ -10,7 +10,7 @@
 
 This repository contains code snippets and examples of an AWS Lambda handler function that implements tenant management requests sent via Amazon SNS & SQS.
 
-There are three main function that represent a tenant management SDK that help service to integrate with the tenant management service (utilities.py):
+There are three main function that represent a tenant management SDK that help service to integrate with the tenant management service (tm_sdk.py):
 1. parse_tenant_mgmt_requests - parse input of SQS batch messages according to the tenant management service schemas
 2. verify_tenant_mgmt_request - conduct security checks and verifications
 3. send_response_to_tenant_mgmt_sqs - reply with success or failure to the tenant management SQS

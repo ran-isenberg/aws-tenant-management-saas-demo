@@ -3,9 +3,9 @@ from typing import Any, Dict, List
 from aws_lambda_powertools import Logger
 from aws_lambda_powertools.utilities.typing import LambdaContext
 
-from tenant_management_integrations.examples.tm_integration.logic.handle_tenant_mgmt_events import handle_events
+from tenant_management_integrations.examples.tm_integration_lambda_handler.logic.handle_tenant_mgmt_events import handle_events
 from tenant_management_integrations.schemas.sqs import HardenedSqsRecordModel
-from tenant_management_integrations.utilities import parse_tenant_mgmt_requests
+from tenant_management_integrations.tm_sdk import parse_tenant_mgmt_requests
 
 
 def tm_integration(event: Dict[str, Any], context: LambdaContext) -> None:  # pylint: disable=unused-argument
