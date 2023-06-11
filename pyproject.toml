@@ -1,0 +1,45 @@
+[tool.poetry]
+name = "saas_demo"
+version = "1.0.0"
+description = ""
+authors = ["Ran Isenberg"]
+classifiers=[
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Natural Language :: English",
+    "Programming Language :: Python :: 3.10",
+]
+repository="https://github.com/ran-isenberg/aws-lambda-handler-cookbook"
+readme = "README.md"
+keywords = ["aws lambda cron job", "AWS eventbridge scheduler", "AWS eventbridge rules", "serverless cron job"]
+license = "MIT-0"
+
+[tool.poetry.dependencies]
+python = "^3.10.0"
+pydantic = {version = "^1.9.0"}
+email-validator = {version = "*"}
+aws-lambda-powertools =  {extras = ["all"],version = "*"}
+cachetools = "*"
+boto3 = "^1.26.125"
+
+
+[tool.poetry.dev-dependencies]
+# DEV
+pytest = "*"
+pytest-mock = "*"
+pycodestyle = "*"
+pytest-cov = "*"
+pytest-html = "*"
+python-dateutil = "*"
+python-dotenv = "*"
+GitPython = "*"
+yapf = "*"
+radon = "*"
+xenon = "*"
+pre-commit = "*"
+flake8 = "*"
+isort = "*"
+types-cachetools = "*"
+types-requests = "*"
+toml = "*"
