@@ -12,6 +12,6 @@ def tm_integration(event: Dict[str, Any], context: LambdaContext) -> None:  # py
     logger = Logger()
 
     tenants_requests: List[HardenedSqsRecordModel] = parse_tenant_mgmt_requests(event=event)
-    logger.info('handling tenant management requests', requests_amount=len(tenants_requests))
+    logger.info('handling tenant management requests')
     handle_events(tenants_requests)
-    logger.info('finished handling tenant management requests', requests_amount=len(tenants_requests))
+    logger.info('finished handling tenant management requests')
