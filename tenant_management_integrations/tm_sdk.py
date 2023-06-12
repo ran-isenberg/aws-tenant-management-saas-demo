@@ -26,10 +26,7 @@ def parse_tenant_mgmt_requests(event: Dict[str, Any]) -> List[HardenedSqsRecordM
         raise TenantMgmtException(error_str) from exc
 
 
-def verify_tenant_mgmt_request(
-    msg: HardenedSqsRecordModel,
-    role_arn: str,
-) -> bool:
+def verify_tenant_mgmt_request(msg: HardenedSqsRecordModel) -> bool:
     # imagine security magic here
     return True
 
