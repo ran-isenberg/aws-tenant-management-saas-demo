@@ -5,20 +5,15 @@ from pydantic import BaseModel
 from tenant_management_integrations.schemas.common import ServicesEventType
 
 
-class CreateData(BaseModel):
-    name: str
-    subdomain: str
-    tenant_type: Literal['PRODUCTION', 'POC', 'TESTING']
-
-
 # this is the request tenant mgmt publishes to SNS to the services
 class ServiceReq(BaseModel):
+    name: str
     request_id: str
     tenant_id: str
     event_type: ServicesEventType
     services: List[str]
     region: str
-    tenant_metadata: CreateData
+    tenant_type: Literal['PRODUCTION', 'POC', 'TESTING']
 
 
 class CreateReq(ServiceReq):
