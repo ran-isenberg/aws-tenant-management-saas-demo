@@ -22,10 +22,7 @@ def handle_events(tenants_requests: List[HardenedSqsRecordModel]) -> None:
 
         try:
             logger.info('verifying request')
-            verify_tenant_mgmt_request(
-                msg=request,
-                role_arn='role_arn',
-            )
+            verify_tenant_mgmt_request(msg=request)
 
         except TenantMgmtException:
             error_str = 'failed to validate signature and token for tenant'
