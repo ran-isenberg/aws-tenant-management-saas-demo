@@ -20,16 +20,20 @@ jobs:
       - run: echo "🐧 This job is now running on a ${{  runner.os }} server hosted by GitHub!"
       - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
       - name: Check out repository code
-        uses: actions/checkout@v3
-      - name: Set up Python 3.10
-        uses: actions/setup-python@v4
+        uses: actions/checkout@v4
+      - name: Set up Python 3.13
+        uses: actions/setup-python@v5
         with:
-          python-version: "3.10"
+          python-version: "3.13"
+      - name: Install poetry
+        run: pipx install poetry
       - name: Install dependencies
         run: |
           pip install --upgrade pip pre-commit poetry
-          poetry export --with=dev --without-hashes --format=requirements.txt > dev_requirements.txt
-          pip install -r dev_requirements.txt
+          pre-commit install
+          poetry config --local virtualenvs.in-project true
+          poetry install --no-root
+          poetry shell
       - name: pre commit
         run: |
           make pre-commit
