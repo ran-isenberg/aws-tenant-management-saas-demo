@@ -33,6 +33,7 @@ jobs:
           pre-commit install
           poetry config --local virtualenvs.in-project true
           poetry install --no-root
+          poetry shell
       - name: pre commit
         run: |
           make pre-commit
